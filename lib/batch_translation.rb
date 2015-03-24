@@ -6,7 +6,7 @@ module ActionView
 
         @index = @index ? @index + 1 : 1
         object_name = "#{@object_name}[translations_attributes][#{@index}]"
-        object = @object.translations.first { |t| t.locale == locale.to_sym }
+        object = @object.translations.find { |t| t.locale == locale.to_sym }
 
         @template.concat @template.hidden_field_tag("#{object_name}[id]", object ? object.id : "")
         @template.concat @template.hidden_field_tag("#{object_name}[locale]", locale)
